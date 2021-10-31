@@ -1,11 +1,16 @@
 {
   "author": "VFLC",
+  "description": "Grab news form CLHS homepage painlessly. Brought to you by VFLC <3",
+  "homepage": "https://github.com/BWsix/CLHS-api",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/vflc-yet-another-tester.esm.js",
   "name": "@clhs-api/core",
   "typings": "dist/index.d.ts",
   "version": "0.0.0",
+  "bugs": {
+    "url": "https://github.com/BWsix/CLHS-api.git/issues"
+  },
   "dependencies": {
     "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.10"
@@ -23,13 +28,27 @@
     "node": ">=10"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
     }
+  },
+  "keywords": [
+    "clhs",
+    "high school",
+    "web scraper"
+  ],
+  "np": {
+    "yolo": true
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BWsix/CLHS-api.git"
   },
   "scripts": {
     "analyze": "size-limit --why",

@@ -3,7 +3,7 @@ import { URLSearchParams } from "url";
 import { API_NEWS_LIST } from "./constants";
 import type { QueryParams, QueryResult } from "./types/newsListQuery";
 
-export const NewsListQuery = async (queryParams?: Partial<QueryParams>) => {
+export const newsListQuery = async (queryParams?: Partial<QueryParams>) => {
   const params = { ...API_NEWS_LIST.defaultParams, ...queryParams };
 
   const { data: queryResult } = await axios.post<QueryResult>(
