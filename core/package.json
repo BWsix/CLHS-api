@@ -7,7 +7,7 @@
   "module": "dist/vflc-yet-another-tester.esm.js",
   "name": "@clhs-api/core",
   "typings": "dist/index.d.ts",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "bugs": {
     "url": "https://github.com/BWsix/CLHS-api.git/issues"
   },
