@@ -14,7 +14,7 @@ export const newsListQuery = async (queryParams?: QueryParamsInput) => {
     delete queryParams.unit;
     delete queryParams.attr;
 
-    flock += `${unit}${unit ? `-${attr}` : attr}`;
+    flock += `${unit || ""}${unit ? `-${attr}` : ""}`;
   }
 
   //@ts-ignore
