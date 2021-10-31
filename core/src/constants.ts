@@ -7,7 +7,7 @@ export const API_NEWS_LIST = {
     auth_type: "user",
     field: "time",
     keyword: "",
-    maxRows: 30,
+    maxRows: 20,
     order: "DESC",
     pageNum: 0,
     tf: 1,
