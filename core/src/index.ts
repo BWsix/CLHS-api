@@ -1,2 +1,6 @@
-export { newsListQuery as NewsListQuery } from "./newsListQuery";
-export { QueryUID } from "./types/newsListQuery";
+export { newsListQuery } from "./newsListQuery";
+export {
+  QueryAttrOptions,
+  QueryUIDOptions,
+  QueryUnitOptions,
+} from "./types/newsListQuery";

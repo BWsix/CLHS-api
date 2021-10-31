@@ -1,4 +1,4 @@
-import { QueryParams, QueryUID } from "./types/newsListQuery";
+import { QueryParamsInput, QueryUIDOptions } from "./types/newsListQuery";
 
 export const API_NEWS_LIST = {
   endpoint:
@@ -11,7 +11,7 @@ export const API_NEWS_LIST = {
     order: "DESC",
     pageNum: 0,
     tf: 1,
-    uid: QueryUID.首頁,
-    use_cache: 1,
-  } as QueryParams,
+    uid: QueryUIDOptions.首頁,
+    use_cache: 0,
+  } as QueryParamsInput,
 };
