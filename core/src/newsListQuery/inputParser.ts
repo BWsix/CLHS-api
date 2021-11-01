@@ -6,7 +6,8 @@ const flockParser = (_attr?: ATTR_Name, _unit?: UNIT_Name) => {
   const attr = _attr ? Options.ATTR[_attr] : null;
   const unit = _unit ? Options.UNIT[_unit] : null;
 
-  return `${unit || ""}${unit && attr && "-"}${attr || ""}`;
+  const flock = `${unit || ""}${unit && attr ? "-" : ""}${attr || ""}`;
+  return flock || null;
 };
 
 export const queryInputParser = (queryInput: QueryInput) => {
