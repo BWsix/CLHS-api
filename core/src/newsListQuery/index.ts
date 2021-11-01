@@ -1,10 +1,18 @@
 import axios from "axios";
 import { URLSearchParams } from "url";
 import { API } from "../constants";
+import { News } from "../types";
 import { queryInputParser } from "./inputParser";
-import { QueryInput, QueryResult } from "./types";
+import { QueryInput, QueryResult, QueryResultMeta } from "./types";
 
-export const newsListQuery = async (queryInput?: QueryInput) => {
+export const newsListQuery = async (
+  queryInput?: QueryInput
+): Promise<{
+  queryMeta?: QueryResultMeta;
+  newsList?: News[];
+  error?: boolean;
+  detail?: string;
+}> => {
   const params = queryInputParser(queryInput || {});
 
   const { data: queryResult } = await axios.post<QueryResult>(
@@ -19,6 +27,10 @@ export const newsListQuery = async (queryInput?: QueryInput) => {
   );
 
   const [queryMeta, ...newsList] = queryResult;
+
+  if (!newsList.length) {
+    return { error: true, detail: "no news can be found." };
+  }
 
   return { queryMeta, newsList };
 };
