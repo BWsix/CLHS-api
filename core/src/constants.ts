@@ -15,3 +15,13 @@ export const API_NEWS_LIST = {
     use_cache: 0,
   } as QueryParamsInput,
 };
+
+export const API_NEWS = {
+  endpoint: (id: string, uid?: string) => {
+    if (!uid) {
+      return `https://www.clhs.tyc.edu.tw/ischool/public/news_view/show.php?nid=${id}`;
+    } else {
+      return `https://www.clhs.tyc.edu.tw/ischool/widget/site_news/news_query_json_content.php?nid=${id}&dir=0&uid=${uid}`;
+    }
+  },
+};
