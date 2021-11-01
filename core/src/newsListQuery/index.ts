@@ -26,7 +26,15 @@ export const newsListQuery = async (
     }
   );
 
+  if (typeof queryResult === "string") {
+    return {
+      error: true,
+      detail: `error from clhs api(might be wrong input type). error message: ${queryResult}`,
+    };
+  }
+
   const [queryMeta, ...newsList] = queryResult;
+  queryMeta.params = params;
 
   if (!newsList.length) {
     return { error: true, detail: "no news can be found." };

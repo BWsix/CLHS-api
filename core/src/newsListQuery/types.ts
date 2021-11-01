@@ -30,4 +30,5 @@ export type QueryResultMeta = {
   pageNum: number;
   maxRows: number;
   totalPages: number;
+  params: QueryParams;
 };
