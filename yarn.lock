@@ -947,12 +947,13 @@
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
 "@clhs-api/core@latest":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@clhs-api/core/-/core-0.0.2.tgz#4f7ce6a22cda2bf19c359da31b34cabd23a9031c"
-  integrity sha512-SDD5dP1zM7RptZKl/W7QMAHzAX7CzQOJFlGDb/IDqaKPoiVXA6+B+xU2ZFxFmdyYnpzueVnzUMgXc+SG7CyamA==
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@clhs-api/core/-/core-0.0.4.tgz#bff5946d9a265e50d4e6d4a53890b0c77bcf135c"
+  integrity sha512-C54DVDwNTWlZKN+C3pzP+1L83zKZf9Kf0+ly28kzxWumeI5FbS5AnDtAVzyg5hi8f8W9vAxbDCgk9WhkGQCX2A==
   dependencies:
     axios "^0.24.0"
     cheerio "^1.0.0-rc.10"
+    utility-types "^3.10.0"
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
