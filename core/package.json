@@ -7,13 +7,14 @@
   "module": "dist/vflc-yet-another-tester.esm.js",
   "name": "@clhs-api/core",
   "typings": "dist/index.d.ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "bugs": {
     "url": "https://github.com/BWsix/CLHS-api.git/issues"
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "cheerio": "^1.0.0-rc.10"
+    "cheerio": "^1.0.0-rc.10",
+    "utility-types": "^3.10.0"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^6.0.4",
@@ -38,7 +39,8 @@
   "keywords": [
     "clhs",
     "high school",
-    "web scraper"
+    "web scraper",
+    "bob"
   ],
   "np": {
     "yolo": true
