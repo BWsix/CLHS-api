@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API } from "../constants";
 import { grab_uid } from "./grab_uid";
-import { NewsContent } from "./types";
+import { NewsContent } from "../types";
 
 export const newsContentQuery = async (
   id: string
