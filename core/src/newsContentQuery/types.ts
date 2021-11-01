@@ -1,4 +1,4 @@
-import { QueryUnitNames } from "./shared";
+import { UNIT_Id, UNIT_Name } from "../types";
 
 export type NewsContent = {
   attachedfile: string;
@@ -15,6 +15,6 @@ export type NewsContent = {
   time: Date;
   title: string;
   uid: string;
-  unit: QueryUnitNames;
-  unitId: string;
+  unit: UNIT_Name;
+  unitId: UNIT_Id;
 };
