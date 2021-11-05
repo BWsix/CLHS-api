@@ -7,13 +7,14 @@ export default async function handler(
 ) {
   if (req.method !== "GET")
     return res.status(405).json({
-      error: true,
-      detail: `${req.method!.toLowerCase()} request is not allowed.`,
+      error: `${req.method!.toLowerCase()} request is not allowed.`,
     });
 
   const id = req.query.id as string;
 
   const result = await newsContentQuery(id);
-
-  res.json(result);
+  if (result.isOk()) {
+    return res.status(200).json(result.value);
+  }
+  return res.status(400).json(result.error);
 }

@@ -7,16 +7,18 @@ export default async function handler(
 ) {
   switch (req.method) {
     case "GET":
-      return res.json(await newsListQuery());
-
-    case "POST":
+    case "POST": {
       const params = req.body;
-      return res.json(await newsListQuery(params));
+      const result = await newsListQuery(params);
 
-    default:
+      if (result.isOk()) return res.status(200).json(result.value);
+      return res.status(400).json(result.error);
+    }
+
+    default: {
       return res.status(405).json({
-        error: true,
-        detail: `${req.method!.toLowerCase()} request is not allowed.`,
+        error: `${req.method!.toLowerCase()} request is not allowed.`,
       });
+    }
   }
 }
