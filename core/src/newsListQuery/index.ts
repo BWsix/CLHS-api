@@ -10,7 +10,7 @@ export const newsListQuery = async (
   queryInput?: QueryInput
 ): Promise<Result<
   { data: { queryMeta: QueryResultMeta; newsList: News[] } },
-  string
+  { error: string }
 >> => {
   const params = queryInputParser(queryInput || {});
 
@@ -26,14 +26,14 @@ export const newsListQuery = async (
   );
 
   if (typeof queryResult === "string") {
-    return err(
-      `error from clhs api(might be wrong input type). error message: ${queryResult}`
-    );
+    return err({
+      error: `error from clhs api(might be wrong input type). error message: ${queryResult}`,
+    });
   }
 
   const [queryMeta, ...newsList] = queryResult;
   queryMeta.params = params;
-  if (!newsList.length) return err("no news can be found.");
+  if (!newsList.length) return err({ error: "no news can be found." });
 
   return ok({ data: { queryMeta, newsList } });
 };

@@ -6,19 +6,19 @@ import { grab_uid } from "./grab_uid";
 
 export const newsContentQuery = async (
   id: string
-): Promise<Result<{ data: NewsContent; warn?: string }, string>> => {
+): Promise<Result<{ data: NewsContent; warn?: string }, { error: string }>> => {
   let uid: UID_Id;
   try {
     uid = await grab_uid(id);
   } catch (e) {
-    return err(e as string);
+    return err({ error: e as string });
   }
 
   const {
     // @ts-ignore tsc lint is yelling at me.
     data: [data, ..._],
   } = await axios.get<NewsContent[]>(API.NEWS.endpoint(id, uid));
-  if (!data) return err("there's no data in the response object.");
+  if (!data) return err({ error: "there's no data in the response object." });
 
   const content = data.content;
   try {
