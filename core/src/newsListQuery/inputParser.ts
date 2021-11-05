@@ -1,5 +1,5 @@
-import { ATTR_Name, UNIT_Name } from "src/types";
 import { Options } from "../constants";
+import { ATTR_Name, UNIT_Name } from "../types";
 import { QueryInput, QueryParams } from "./types";
 
 const flockParser = (_attr?: ATTR_Name, _unit?: UNIT_Name) => {
