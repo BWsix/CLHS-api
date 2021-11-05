@@ -1,39 +1,34 @@
 import axios from "axios";
+import { err, ok, Result } from "neverthrow";
 import { API } from "../constants";
+import { NewsContent, UID_Id } from "../types";
 import { grab_uid } from "./grab_uid";
-import { NewsContent } from "../types";
 
 export const newsContentQuery = async (
   id: string
-): Promise<{
-  data?: NewsContent;
-  error?: boolean;
-  warn?: boolean;
-  detail?: string;
-}> => {
-  const { uid, e } = await grab_uid(id);
-  if (e) return e;
+): Promise<Result<{ data: NewsContent; warn?: string }, string>> => {
+  let uid: UID_Id;
+  try {
+    uid = await grab_uid(id);
+  } catch (e) {
+    return err(e as string);
+  }
 
   const {
     // @ts-ignore tsc lint is yelling at me.
     data: [data, ..._],
-  } = await axios.get<NewsContent[]>(API.NEWS.endpoint(id, uid!));
-  if (!data)
-    return {
-      error: true,
-      detail: "there's no data in the response object.",
-    };
+  } = await axios.get<NewsContent[]>(API.NEWS.endpoint(id, uid));
+  if (!data) return err("there's no data in the response object.");
 
   const content = data.content;
   try {
     data.content = !!!content ? content : decodeURIComponent(content);
   } catch (e) {
-    return {
+    return ok({
       data,
-      warn: true,
-      detail: "error occurred while decoding the content.",
-    };
+      warn: "error occurred while decoding the content.",
+    });
   }
 
-  return { data };
+  return ok({ data });
 };
