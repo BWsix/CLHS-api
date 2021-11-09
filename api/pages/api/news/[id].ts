@@ -12,9 +12,9 @@ export default async function handler(
 
   const id = req.query.id as string;
 
-  const result = await newsContentQuery(id);
-  if (result.isOk()) {
-    return res.status(200).json(result.value);
-  }
-  return res.status(400).json(result.error);
+  return newsContentQuery(id, async (data, error) => {
+    if (error) return res.status(400).json(error);
+
+    return res.status(200).json(data);
+  });
 }

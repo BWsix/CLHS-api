@@ -9,10 +9,11 @@ export default async function handler(
     case "GET":
     case "POST": {
       const params = req.body;
-      const result = await newsListQuery(params);
+      return newsListQuery(params, async (data, error) => {
+        if (error) return res.status(400).json(error);
 
-      if (result.isOk()) return res.status(200).json(result.value);
-      return res.status(400).json(result.error);
+        return res.status(200).json(data);
+      });
     }
 
     default: {
