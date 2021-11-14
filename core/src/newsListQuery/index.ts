@@ -7,7 +7,7 @@ import { QueryInput, QueryResult, QueryResultMeta } from "./types";
 
 export const newsListQuery = async (
   queryInput: QueryInput,
-  cb: (
+  cb?: (
     data: { queryMeta: QueryResultMeta; newsList: News[] },
     error?: string
   ) => void
@@ -26,15 +26,14 @@ export const newsListQuery = async (
   );
 
   if (typeof queryResult === "string") {
-    return cb(
-      {} as any,
-      `error from clhs api(might be wrong input type). error message: ${queryResult}`
-    );
+    const errMsg = `error from clhs api(might be wrong input type). error message: ${queryResult}`;
+    if (cb) return cb({} as any, errMsg);
+    throw errMsg;
   }
 
   const [queryMeta, ...newsList] = queryResult;
   queryMeta.params = params;
-  if (!newsList.length) return cb({} as any, "no news can be found.");
+  const result = { queryMeta, newsList };
 
-  return cb({ queryMeta, newsList });
+  return cb ? cb(result) : result;
 };
