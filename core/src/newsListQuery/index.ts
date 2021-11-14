@@ -45,6 +45,7 @@ export async function newsListQuery(
 
   const [queryMeta, ...newsList] = queryResult;
   queryMeta.params = params;
+  for (let news of newsList) news.link = API.NEWS.endpoint(news.newsId);
   const result = { queryMeta, newsList };
 
   return cb ? cb(result) : result;

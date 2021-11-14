@@ -31,6 +31,9 @@ export type News = {
   news_image: string;
   news_image_width: number;
   news_image_height: number;
+
+  // additional data
+  link: string;
 };
 
 export type NewsContent = {
