@@ -4,6 +4,9 @@ import { NewsContent, UID_Id } from "../types";
 import { grab_uid } from "./grab_uid";
 import { NewsContentQueryCB } from "./types";
 
+/**
+ * 取得指定`id`的新聞內容
+ */
 export async function newsContentQuery(id: string): Promise<NewsContent>;
 export async function newsContentQuery(
   id: string,

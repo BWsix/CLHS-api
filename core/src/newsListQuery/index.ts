@@ -9,6 +9,10 @@ import {
   QueryResult,
 } from "./types";
 
+/**
+ * 取得新聞列表
+ * @param queryInput 預設為`首頁`的前`20`則新聞
+ */
 export async function newsListQuery(
   queryInput?: QueryInput
 ): Promise<NewsListQueryResult>;
