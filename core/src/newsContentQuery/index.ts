@@ -2,11 +2,14 @@ import axios from "axios";
 import { API } from "../constants";
 import { NewsContent, UID_Id } from "../types";
 import { grab_uid } from "./grab_uid";
+import { NewsContentQueryCB } from "./types";
 
-export const newsContentQuery = async (
+export async function newsContentQuery(id: string): Promise<NewsContent>;
+export async function newsContentQuery(
   id: string,
-  cb?: (data: NewsContent, error?: string) => void
-) => {
+  cb: NewsContentQueryCB
+): Promise<void>;
+export async function newsContentQuery(id: string, cb?: NewsContentQueryCB) {
   let uid: UID_Id;
   try {
     uid = await grab_uid(id);
@@ -33,4 +36,4 @@ export const newsContentQuery = async (
   }
 
   return cb ? cb(data) : data;
-};
+}

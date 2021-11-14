@@ -32,3 +32,13 @@ export type QueryResultMeta = {
   totalPages: number;
   params: QueryParams;
 };
+
+export type NewsListQueryResult = {
+  queryMeta: QueryResultMeta;
+  newsList: News[];
+};
+
+export type NewsListQueryCB = (
+  data: { queryMeta: QueryResultMeta; newsList: News[] },
+  error?: string
+) => void;
